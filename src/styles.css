@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+.mx-1 {
+  margin: 0 10px;
+}
+.mx-2 {
+  margin: 0 20px;
+}
+.my-1 {
+  margin: 10px 0;
+}
+.my-2 {
+  margin: 20px 0;
+}
+.m1 {
+  margin: 10px;
+}
+.m2 {
+  margin: 20px;
+}
