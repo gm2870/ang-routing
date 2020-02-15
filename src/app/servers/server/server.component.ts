@@ -22,6 +22,7 @@ export class ServerComponent implements OnInit {
     // this.route.params.subscribe(params => {
     //   this.server = this.serversService.getServer(+params["id"]);
     // });
+    // data object exists because this component is using server resolver
     this.route.data.subscribe((data: Data) => {
       this.server = data.server;
     });

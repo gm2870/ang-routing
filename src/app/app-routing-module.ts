@@ -1,46 +1,46 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { HomeComponent } from "./home/home.component";
-import { UsersComponent } from "./users/users.component";
-import { UserComponent } from "./users/user/user.component";
-import { ServersComponent } from "./servers/servers.component";
-import { ServerComponent } from "./servers/server/server.component";
-import { EditServerComponent } from "./servers/edit-server/edit-server.component";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { UsersComponent } from './users/users.component';
+import { UserComponent } from './users/user/user.component';
+import { ServersComponent } from './servers/servers.component';
+import { ServerComponent } from './servers/server/server.component';
+import { EditServerComponent } from './servers/edit-server/edit-server.component';
 // import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 // import { AuthService } from "./auth.service";
-import { AuthGuardService } from "./auth-guard.service";
-import { CanDeactivateGuard } from "./servers/edit-server/can-deactivate-guard.service";
-import { ErrorPageComponent } from "./error-page/error-page.component";
-import { serverResolver } from "./servers/server/server-resolver.service";
+import { AuthGuardService } from './auth-guard.service';
+import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { ServerResolver } from './servers/server/server-resolver.service';
 const appRoutes: Routes = [
   {
-    path: "",
+    path: '',
     component: HomeComponent
   },
   {
-    path: "users",
+    path: 'users',
     component: UsersComponent,
     children: [
       {
-        path: ":id/:name",
+        path: ':id/:name',
         component: UserComponent
       }
     ]
   },
 
   {
-    path: "servers",
+    path: 'servers',
     component: ServersComponent,
     // canActivate: [AuthGuardService],
     canActivateChild: [AuthGuardService],
     children: [
       {
-        path: ":id",
+        path: ':id',
         component: ServerComponent,
-        resolve: { server: serverResolver }
+        resolve: { server: ServerResolver }
       },
       {
-        path: ":id/edit",
+        path: ':id/edit',
         component: EditServerComponent,
         canDeactivate: [CanDeactivateGuard]
       }
@@ -51,13 +51,13 @@ const appRoutes: Routes = [
   //   component: PageNotFoundComponent
   // },
   {
-    path: "not-found",
+    path: 'not-found',
     component: ErrorPageComponent,
-    data: { message: "page not found" }
+    data: { message: 'page not found' }
   },
   {
-    path: "**",
-    redirectTo: "/not-found"
+    path: '**',
+    redirectTo: '/not-found'
   }
 ];
 @NgModule({
